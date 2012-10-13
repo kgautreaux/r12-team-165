@@ -11,6 +11,8 @@ gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'devise'
 gem 'carrierwave'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 # Gems used only for assets and not required
 # in production environments by default.

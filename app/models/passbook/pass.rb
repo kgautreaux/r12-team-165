@@ -13,7 +13,7 @@ class Passbook::Pass < ActiveRecord::Base
      Mconf[Rails.env][:pass_images_path] + 'logo@2x.png',
      Mconf[Rails.env][:pass_images_path] + 'icon.png',
      Mconf[Rails.env][:pass_images_path] + 'logo.png',
-     self.medication.thumbnail.current_path]
+     (self.medication.thumbnail.current_path || Mconf[Rails.env][:pass_images_path] + 'thumbnail@2x.png')]
 
      Rails.logger.info("files returned #{a}.")
      return a

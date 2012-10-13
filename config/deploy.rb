@@ -88,6 +88,10 @@ deploy.task :restart, :roles => :app do
   sudo "chown -R www-data:www-data #{shared_path}/bundle"
   sudo "chown -R www-data:www-data #{shared_path}/log"
 
+  # Restart delayed_job
+  run "RAILS_ENV=production #{release_path}/script/delayed_job stop"
+  run "RAILS_ENV=production #{release_path}/script/delayed_job -n 2 start"
+
   # Restart Application
   run "touch #{current_path}/tmp/restart.txt"
 end

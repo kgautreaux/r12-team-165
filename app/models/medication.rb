@@ -16,8 +16,10 @@ class Medication < ActiveRecord::Base
   end
 
   def get_updated_thumbnail(med)
-    result = Pillboxr.with(image: true, ingredient: med.name, api_key: Mconf[Rails.env][:pillboxr_api_key])
-    med.remote_thumbnail_url = result.pills.first.image_url unless result.record_count == 0
-    med.save!
+      result = Pillboxr.with(image: true, ingredient: med.name, api_key: Mconf[Rails.env][:pillboxr_api_key])
+      med.remote_thumbnail_url = result.pills.first.image_url unless result.record_count == 0
+      med.save!
   end
+
+  handle_asynchronously :get_updated_thumbnail
 end
