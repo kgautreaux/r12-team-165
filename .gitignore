@@ -19,4 +19,4 @@
 .rspec
 /bin
 /vendor
-
+/config/initializers/passbook.rb
