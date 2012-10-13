@@ -9,11 +9,14 @@ class Passbook::Pass < ActiveRecord::Base
   attr_accessible :serial_number, :auth_token
 
   def files
-    ['/Volumes/Passbook Materials/Passes/Generic.raw/icon.png',
-     '/Volumes/Passbook Materials/Passes/Generic.raw/icon@2x.png',
-     '/Volumes/Passbook Materials/Passes/Generic.raw/logo.png',
-     '/Users/kaygee/Downloads/logo@2x.png',
+    a = [Mconf[Rails.env][:pass_images_path] + 'icon@2x.png',
+     Mconf[Rails.env][:pass_images_path] + 'logo@2x.png',
+     Mconf[Rails.env][:pass_images_path] + 'icon.png',
+     Mconf[Rails.env][:pass_images_path] + 'logo.png',
      self.medication.thumbnail.current_path]
+
+     Rails.logger.info("files returned #{a}.")
+     return a
   end
 
   def take_now?
