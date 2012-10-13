@@ -13,7 +13,11 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-Mconf = YAML.load(File.open(File.expand_path("../config.yml", __FILE__)))
+begin
+    Mconf = YAML.load(File.open(File.expand_path("../config.yml", __FILE__)))
+rescue Errno::ENOENT
+    puts "No config file found."
+end
 
 module Medpasses
   class Application < Rails::Application
