@@ -5,13 +5,15 @@ GIT
     passbook (0.0.3)
       rubyzip
 
-PATH
-  remote: /Users/kaygee/Documents/coding/grocer
+GIT
+  remote: git://github.com/kgautreaux/grocer.git
+  revision: a24f81ac0cb86348e07d995b02dfb47bf27ac753
   specs:
     grocer (0.1.0)
 
-PATH
-  remote: ~/Documents/coding/pass_renderer
+GIT
+  remote: git://github.com/kgautreaux/pass_renderer.git
+  revision: 2c471f6f03888751cbdb2137fb66f83ac3683091
   specs:
     pass_renderer (0.0.2)
       passbook (>= 0.0.3)
