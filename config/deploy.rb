@@ -73,6 +73,9 @@ after 'deploy:update_code' do
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "cp #{shared_path}/config/config.yml #{release_path}/config/config.yml"
 
+  # Link carrierwave image storage
+  run "rm -rf #{release_path}/public/uploads && ln -s #{shared_path}/uploads #{latest_release}/public/uploads"
+
   # Compile Assets
   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
 end
