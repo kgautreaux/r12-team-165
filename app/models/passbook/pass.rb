@@ -13,8 +13,7 @@ class Passbook::Pass < ActiveRecord::Base
      '/Volumes/Passbook Materials/Passes/Generic.raw/icon@2x.png',
      '/Volumes/Passbook Materials/Passes/Generic.raw/logo.png',
      '/Users/kaygee/Downloads/logo@2x.png',
-     '/Users/kaygee/Downloads/thumbnail.png',
-     '/Users/kaygee/Downloads/thumbnail@2x.png']
+     self.medication.thumbnail.current_path]
   end
 
   def take_now?

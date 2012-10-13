@@ -8,8 +8,7 @@ class CreateMedications < ActiveRecord::Migration
       t.string :rationale, :null => false, :default => "general health"
       t.boolean :active, :null => false, :default => false
       t.string :directions
-      t.string :image_path
-      t.string :image_name
+      t.string :thumbnail
       t.belongs_to :user
 
       t.timestamps

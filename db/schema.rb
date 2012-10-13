@@ -21,8 +21,7 @@ ActiveRecord::Schema.define(:version => 20121013014609) do
     t.string   "rationale",  :default => "general health", :null => false
     t.boolean  "active",     :default => false,            :null => false
     t.string   "directions"
-    t.string   "image_path"
-    t.string   "image_name"
+    t.string   "thumbnail"
     t.integer  "user_id"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
