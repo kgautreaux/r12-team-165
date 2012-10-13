@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20121013014609) do
     t.string   "directions"
     t.string   "image_path"
     t.string   "image_name"
-    t.integer  "patient_id"
+    t.integer  "user_id"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end

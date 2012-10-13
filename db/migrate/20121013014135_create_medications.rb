@@ -10,7 +10,7 @@ class CreateMedications < ActiveRecord::Migration
       t.string :directions
       t.string :image_path
       t.string :image_name
-      t.belongs_to :patient
+      t.belongs_to :user
 
       t.timestamps
     end
