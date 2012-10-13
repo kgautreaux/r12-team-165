@@ -7,7 +7,7 @@ class Passbook::PassesController < ApplicationController
   end
 
   def show
-    @pass = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier], serial_number: params[:serial_number]).first
+    @pass = Passbook::Pass.where(serial_number: params[:serial_number]).first
 
     if @pass.nil?
       respond_with status: 404

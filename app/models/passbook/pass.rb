@@ -32,11 +32,11 @@ class Passbook::Pass < ActiveRecord::Base
   end
 
   def team_identifier
-    Mconf[:team_identifier]
+    Mconf[Rails.env][:team_identifier]
   end
 
   def webservice_url
-    Mconf[:webservice_url]
+    Mconf[Rails.env][:webservice_url]
   end
 
   def locations

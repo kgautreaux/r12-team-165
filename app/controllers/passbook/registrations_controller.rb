@@ -15,7 +15,7 @@ class Passbook::RegistrationsController < ApplicationController
   end
 
   def create
-    @pass = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier], serial_number: params[:serial_number]).first
+    @pass = Passbook::Pass.where(serial_number: params[:serial_number]).first
     render nothing: true, status: 404 and return if @pass.nil?
 
     @registration = @pass.registrations.first_or_initialize(device_library_identifier: params[:device_library_identifier])
@@ -29,7 +29,7 @@ class Passbook::RegistrationsController < ApplicationController
   end
 
   def destroy
-    @pass = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier], serial_number: params[:serial_number]).first
+    @pass = Passbook::Pass.where(serial_number: params[:serial_number]).first
     render nothing: true, status: 404 and return if @pass.nil?
 
     @registration = @pass.registrations.where(device_library_identifier: params[:device_library_identifier]).first
