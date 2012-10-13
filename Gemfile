@@ -7,6 +7,8 @@ gem 'passbook', github: "frozon/passbook"
 gem 'pass_renderer', :path => '~/Documents/coding/pass_renderer'
 gem 'grocer', :path => '/Users/kaygee/Documents/coding/grocer'
 gem 'capistrano'
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,6 +1,18 @@
 Medpasses::Application.routes.draw do
 
   devise_for :users
+
+  namespace :passbook, path: "passbook/api/v1" do
+    constraints(pass_type_identifier: /([\w\d]\.?)+/) do
+      post '/log' => 'passes#log'
+      get '/passes/:pass_type_identifier/:serial_number' => 'passes#show'
+
+      get '/devices/:device_library_identifier/registrations/:pass_type_identifier' => 'registrations#index'
+      post '/devices/:device_library_identifier/registrations/:pass_type_identifier/:serial_number' => 'registrations#create'
+      delete '/devices/:device_library_identifier/registrations/:pass_type_identifier/:serial_number' => 'registrations#destroy'
+    end
+  end
+
   resources :medications
 
   root :to => 'splash#index'
