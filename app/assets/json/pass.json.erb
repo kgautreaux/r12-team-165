@@ -22,7 +22,7 @@
     "primaryFields" : [
       {
         "key" : "primaryDrugName",
-        "value" : "<%= @pass.name.capitalize %>\n<%= @pass.dose %><%= @pass.units %>",
+        "value" : "<%= @pass.name.capitalize %>\n<%= @pass.readable_dose %><%= @pass.units %>",
         "changeMessage" : "Dose for <%= @pass.name %> changed to %@."
       }
     ],
@@ -36,7 +36,7 @@
       {
         "key": "active",
         "label": "Take now?",
-        "value": "<%= @pass.active %>",
+        "value": "<%= @pass.take_now? %>",
         "changeMessage": "Time to take your <%= @pass.name %>? %@!"
       }
     ],

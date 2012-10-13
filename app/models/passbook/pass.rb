@@ -1,11 +1,25 @@
-class Pass < ActiveRecord::Base
+class Passbook::Pass < ActiveRecord::Base
   has_many :registrations, class_name: "Passbook::Registration"
   belongs_to :medication, class_name: "Medication", inverse_of: :pass
+  delegate :name, :dose, :units, :directions, :category, :rationale, :active, to: :medication
 
   validates_presence_of :serial_number
   validates_uniqueness_of :serial_number
 
-  attr_accessible :serial_number
+  attr_accessible :serial_number, :auth_token
+
+  def files
+    ['/Volumes/Passbook Materials/Passes/Generic.raw/icon.png',
+     '/Volumes/Passbook Materials/Passes/Generic.raw/icon@2x.png',
+     '/Volumes/Passbook Materials/Passes/Generic.raw/logo.png',
+     '/Users/kaygee/Downloads/logo@2x.png',
+     '/Users/kaygee/Downloads/thumbnail.png',
+     '/Users/kaygee/Downloads/thumbnail@2x.png']
+  end
+
+  def take_now?
+    active ? "Yes" : "No"
+  end
 
   def format_version
     1
@@ -16,11 +30,20 @@ class Pass < ActiveRecord::Base
   end
 
   def team_identifier
-    "LVRJ4ZVF84"
+    Mconf[:team_identifier]
   end
 
   def webservice_url
     Mconf[:webservice_url]
+  end
+
+  def locations
+    [
+      {
+        longitude: self.medication.user.practice.longitude,
+        latitude: self.medication.user.practice.latitude
+      }
+    ].to_json
   end
 
   def barcode
@@ -43,9 +66,8 @@ class Pass < ActiveRecord::Base
     "edpass.es"
   end
 
-  def respond_to_missing?(method, include_private = false)
-    super
-    Mconf.has_key?(method.to_sym)
+  def readable_dose
+    self.dose
   end
 
   # def respond_to_missing?(method, include_private = false)

@@ -41,8 +41,7 @@ class MedicationsController < ApplicationController
   def create
     @medication = Medication.new(params[:medication])
     @medication.user_id = current_user.id
-    @medication.pass = @medication.build_pass(pass_type_identifier: @medication.pass_type_identifier,
-                                              serial_number: SerialNumberGenerator.generate,
+    @medication.pass = @medication.build_pass(serial_number: SerialNumberGenerator.generate,
                                               auth_token: AuthTokenGenerator.token)
 
     respond_to do |format|

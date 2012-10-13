@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Passbook::Registration < ActiveRecord::Base
   belongs_to :pass, class_name: "Passbook::Pass"
 
   validates_presence_of :device_library_identifier
