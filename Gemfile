@@ -9,6 +9,7 @@ gem 'pass_renderer', github: "kgautreaux/pass_renderer"
 gem 'capistrano'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,7 +21,6 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'devise'
   gem 'brakeman'
   gem 'pry'
   gem 'pry-rails'
