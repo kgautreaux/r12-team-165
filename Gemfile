@@ -6,6 +6,7 @@ gem 'pillboxr', '>= 0.8.2'
 gem 'passbook', github: "frozon/passbook"
 gem 'pass_renderer', :path => '~/Documents/coding/pass_renderer'
 gem 'grocer', :path => '/Users/kaygee/Documents/coding/grocer'
+gem 'capistrano'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,20 +32,5 @@ end
 
 group :production do
   gem 'mysql2'
-  gem 'capistrano'
+  gem 'therubyracer'
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
