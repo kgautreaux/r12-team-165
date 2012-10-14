@@ -13,6 +13,7 @@ class Medication < ActiveRecord::Base
   after_save do
     self.pass.updated_at = self.updated_at
     self.pass.save!
+    send_push_notification(self)
   end
 
   def get_updated_thumbnail(med)
@@ -21,5 +22,20 @@ class Medication < ActiveRecord::Base
       med.save!
   end
 
+  def send_push_notification(med)
+    push_tokens = med.pass.registrations.map(&:push_token)
+
+    if push_tokens.present?
+      pusher = Grocer.pusher(certificate: Mconf[Rails.env][:push_cert_path],
+                             passphrase: Mconf[Rails.env][:p12_cert_password],
+                             gateway: 'gateway.push.apple.com')
+      push_tokens.each do |token|
+        notification = Grocer::Notification.new({device_token: token}, true)
+        pusher.push(notification)
+      end
+    end
+  end
+
   handle_asynchronously :get_updated_thumbnail
+  handle_asynchronously :send_push_notification
 end
