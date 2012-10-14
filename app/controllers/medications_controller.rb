@@ -62,7 +62,7 @@ class MedicationsController < ApplicationController
 
     respond_to do |format|
       if @medication.update_attributes(params[:medication])
-        format.html { redirect_to @medication, notice: 'Medication was successfully updated.' }
+        format.html { redirect_to medications_path, notice: 'Medication was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

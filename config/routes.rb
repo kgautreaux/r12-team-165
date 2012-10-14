@@ -1,6 +1,6 @@
 Medpasses::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   namespace :passbook, path: "passbook/api/v1" do
     constraints(pass_type_identifier: /([\w\d]\.?)+/) do
