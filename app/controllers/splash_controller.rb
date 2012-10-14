@@ -1,6 +1,7 @@
 class SplashController < ApplicationController
   def index
     @user = User.new
+    @page_home = 'active'
   end
 
   def create
@@ -12,4 +13,5 @@ class SplashController < ApplicationController
       redirect_to root_path
     end
   end
+
 end

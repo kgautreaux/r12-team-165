@@ -1,10 +1,14 @@
 class MedicationsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :set_current_page
 
   # GET /medications
   # GET /medications.json
   def index
     @medications = current_user.medications.all
+    if current_user.sign_in_count < 2
+      flash[:notice] = "You must access your medications using Safari on OS X or MobileSafari on your iPhone to be able to download passes."
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,6 +37,7 @@ class MedicationsController < ApplicationController
 
   # GET /medications/1/edit
   def edit
+    flash[:notice] = "Editing a medication will send a push notification to update the pass on your phone."
     @medication = Medication.find(params[:id])
   end
 

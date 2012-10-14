@@ -1,6 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  def static
+    case params[:page]
+    when 'about'
+      @page_about = 'active'
+      render 'pages/about'
+    when 'pricing'
+      @page_pricing = 'active'
+      render 'pages/pricing'
+    when 'faq'
+      @page_faq = 'active'
+      render 'pages/faq'
+    when 'contact'
+      @page_contact = 'active'
+      render 'pages/contact'
+    end
+  end
+
   def email_me
     File.open(File.expand_path('../../../lib/emails.txt', __FILE__), "w") do |f|
       f.write(params[:email] + "\n")

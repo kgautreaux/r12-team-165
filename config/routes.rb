@@ -17,6 +17,7 @@ Medpasses::Application.routes.draw do
 
   root :to => 'splash#index'
   match '/email_me' => 'application#email_me'
+  match '/:page' => 'application#static'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,23 +1,42 @@
 <h1>Listing Medications</h1>
+<% if current_user.sign_in_count < 2 %>
+<div class="alert alert-block">Please use Safari on OS X or MobileSafari on iPhone or you won't be able to download passes.<a href="#" id="close-button" class="close" data-dismiss="alert">×</a></div>
+<% end %>
 
-<table class="table table-condensed table-hover">
+<div class="well hidden-phone visible-desktop">
+<table class="table table-condensed table-hover hidden-phone visible-desktop">
   <tr>
     <th class="span4">Medication</th>
-      <th class="span4">Dose</th>
       <th class="span4">Directions</th>
-      <th class="span1"></th>
-      <th class="span1"></th>
+      <th class="span4">Why?</th>
       <th class="span1"></th>
   </tr>
 
 <% @medications.each do |medication| %>
   <tr>
-    <td><%= link_to medication.name.capitalize, medication %></td>
-    <td><%= Integer(medication.dose) %><%= medication.units %></td>
+    <td><%= link_to medication.name.capitalize, edit_medication_path(medication) %><%= link_to image_tag('passbook_badge@2x.png', {class: "pull-right", width: 122, height: 40}), medication %><br/>
+      <span><%= Integer(medication.dose) %><%= medication.units %></span>
+    </td>
     <td><%= medication.directions %></td>
-    <td><%= link_to image_tag('passbook_badge@2x.png', {width: 800, height: 400}), medication %></td>
-    <td><%= link_to 'Edit', edit_medication_path(medication) %></td>
-    <td><%= link_to 'Destroy', medication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>For your <%= medication.rationale %></td>
+    <td><%= link_to "", medication, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-trash btn-large btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<table class="table table-condensed table-hover visible-phone hidden-desktop">
+  <tr>
+    <th class="span8">Medication</th>
+      <th class="span1"></th>
+  </tr>
+
+<% @medications.each do |medication| %>
+  <tr>
+    <td><%= link_to medication.name.capitalize, edit_medication_path(medication) %><%= link_to image_tag('passbook_badge@2x.png', {class: "pull-right", width: 122, height: 40}), medication %><br/>
+      <span><%= Integer(medication.dose) %><%= medication.units %></span>
+    </td>
+    <td><%= link_to "", medication, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-trash btn-large btn-danger", style: "vertical-align:baseline;" %></td>
   </tr>
 <% end %>
 </table>

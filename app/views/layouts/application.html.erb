@@ -35,15 +35,16 @@
           </a>
           <div class="nav-collapse fr">
             <ul class="nav">
-              <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="about.html">About us</a></li>
-              <li><a href="plans.html">Pricing</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="contact.html">Contact</a></li>
+              <li class="<%= @page_home %>"><%= link_to "Home", root_path %></li>
+              <li class="<%= @page_about %>"><%= link_to "About us", "/about" %></li>
+              <li class="<%= @page_pricing %>"><%= link_to "Pricing", "/pricing" %></li>
+              <li class="<%= @page_faq %>"><%= link_to "Questions", "/faq" %></li>
+              <li class="<%= @page_contact %>"><%= link_to "Contact Us", "/contact" %></li>
               <% if current_user %>
-                <li><button class="btn"><%= link_to("Sign Out", destroy_user_session_path, method: :delete) %></button></li>
+                <li><%= link_to "Your medications", medications_path %></li>
+                <li class="<%= current_page?(:controller => 'medications')%>"><button class="btn"><%= link_to("Sign Out", destroy_user_session_path, method: :delete) %></button></li>
               <% else %>
-                <li><button class="btn btn-primary"><%= link_to("Sign In", new_user_session_path) %></button></li>
+                <li><button class="btn"><%= link_to("Sign In", new_user_session_path) %></button></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
@@ -55,20 +56,21 @@
   ================================================== -->
   <div id="content" class="container">
 <% if flash[:notice] %>
-<div class="alert alert-block"><%= flash[:notice] %><a href="#" class="close" data-dismiss="alert">×</a></div>
+<div class="alert alert-block"><%= flash[:notice] %><a href="#" id="close-button" class="close" data-dismiss="alert">×</a></div>
 <% end %>
 <% if flash[:alert] %>
-<div class="alert alert-block"><%= flash[:alert] %><a href="#" class="close" data-dismiss="alert">×</a></div>
+<div class="alert alert-block"><%= flash[:alert] %><a href="#" id="close-button" class="close" data-dismiss="alert">×</a></div>
 <% end %>
 
-<hr />
+<hr class="visible-phone hidden-desktop"/>
 
-<div class="well">
+<a href="tel:13088729639" class="icon-phone span8 btn btn-danger visible-phone hidden-desktop"> Click to call a doctor to discuss your medications</a>
+
+<hr />
 <%= yield %>
-</div>
 
   <hr />
-
+  <div class="container">
   <div class="row">
     <div class="span4">
       <h2><span class="grey">Why</span> do I need this medicine? </h2>
@@ -84,30 +86,26 @@
     </div>
   </div>
   </div>
+</div>
 
 <footer class="row">
     <div class="container">
       <div class="row">
-        <div class="span2">
+        <div class="span4">
           <h3>Quick links</h3>
           <ul>
-            <li><a href="#" title="">Home</a></li>
-            <li><a href="#" title="">About us</a></li>
-          </ul>
-        </div>
-        <div class="span2">
-          <br /><br />
-          <ul>
+            <li><%= link_to "About us", "/about" %></li>
+            <li><%= link_to "Plans", "/pricing" %></li>
             <li><a href="#" title="">Pricing</a></li>
             <li><a href="#" title="">Contact</a></li>
           </ul>
         </div>
         <div class="span4 social-networks">
-          <h3>Stay in touch</h3>
+          <h3>Connect with Us</h3>
           <p>Stay in touch on social networks</p>
-          <a href="http://facebook.com" title="Follow us on Facebook" class="icon-facebook"></a>
-          <a href="http://twitter.com" title="Follow us on Twitter" class="icon-twitter"></a>
-          <a href="http://github.com/kgautreaux" title="Follow us on Github" class="icon-github"></a>
+          <a href="http://facebook.com" title="We are not on Facebook. Psych!" class="icon-facebook"></a>
+          <a href="http://twitter.com/kgautreaux" title="Follow kgautreaux on Twitter" class="icon-twitter"></a>
+          <a href="http://github.com/kgautreaux" title="Follow kgautreaux on Github" class="icon-github"></a>
         </div>
         <div class="span4">
           <h3>Newsletter</h3>
