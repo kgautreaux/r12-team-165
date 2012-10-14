@@ -62,13 +62,15 @@
 <div class="alert alert-block"><%= flash[:alert] %><a href="#" id="close-button" class="close" data-dismiss="alert">×</a></div>
 <% end %>
 
+<% cache do %>
 <hr class="visible-phone hidden-desktop"/>
 
 <a href="tel:13088729639" class="icon-phone span8 btn btn-danger visible-phone hidden-desktop"> Click to call a doctor to discuss your medications</a>
 
 <hr />
+<% end %>
 <%= yield %>
-
+<% cache do %>
   <hr />
   <div class="container">
   <div class="row">
@@ -138,5 +140,6 @@
 
 
   </footer>
+<% end %>
 </body>
 </html>
