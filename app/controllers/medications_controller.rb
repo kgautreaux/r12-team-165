@@ -1,6 +1,5 @@
 class MedicationsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :set_current_page
 
   # GET /medications
   # GET /medications.json
