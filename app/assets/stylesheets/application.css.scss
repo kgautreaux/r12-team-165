@@ -1,19 +1,20 @@
 // Example using 'Cerulean' bootswatch
 //
 // First import journal variables
-@import "bootswatch/spacelab/variables";
+//@import "bootswatch/spacelab/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
+@import "font-awesome";
 
 // Bootstrap body padding for fixed navbar
-body { padding-top: 60px; }
+//body { padding-top: 60px; }
 
 // Responsive styles go here in case you want them
 @import "bootstrap-responsive";
 
 // And finally bootswatch style itself
-@import "bootswatch/spacelab/bootswatch";
+//@import "bootswatch/spacelab/bootswatch";
 
 // Whatever application styles you have go last
 @import "splash";

@@ -8,12 +8,12 @@ gem 'grocer', github: "kgautreaux/grocer"
 gem 'pass_renderer', github: "kgautreaux/pass_renderer"
 gem 'capistrano'
 gem 'bootstrap-sass'
-gem 'bootswatch-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+gem 'font-awesome-sass-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

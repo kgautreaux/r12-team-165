@@ -1,2 +1,42 @@
-<h1>Splash#index</h1>
-<p>Find me in app/views/splash/index.html.erb</p>
+  <div class="hero-unit">
+
+    <!-- heading text -->
+    <p class="ac">
+      Never forget to take a medication again.
+    </p>
+
+    <!-- Carousel -->
+    <div id="macbook_carousel">
+      <div id="carousel" class="carousel slide" rel="carousel">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="active item">
+            <%= image_tag("hero.png") %>
+          </div>
+          <div class="item">
+            <img src="http://placehold.it/600x360/C2D9A3/fff" />
+          </div>
+          <div class="item">
+            <img src="http://placehold.it/600x360/47BFA6/fff" />
+          </div>
+        </div>
+        <!-- Carousel navigation -->
+        <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span7">
+      <h1 class="lead">
+        <b>Medpasses</b> help you remember what you are taking, when you are taking it, and why it is important.
+      </h1>
+    </div>
+    <div class="span4 well">
+      <h3 class="ac">FREE<small> trial</small></h3>
+      <p class="ac">
+        <a class="btn btn-large btn-primary" href="/users/sign_up" title=""><b>Sign Up for Free</b></a>
+      </p>
+    </div>
+  </div>

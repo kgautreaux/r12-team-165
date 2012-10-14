@@ -5,13 +5,140 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Load Open sans from Google Font Directory -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
-<p><%= link_to("Sign out", destroy_user_session_path, method: :delete) if current_user %></p>
-<p><%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %></p>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+  <!-- Header
+  ================================================== -->
+  <header id="header">
 
+    <!-- Navigation
+    ================================================== -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html">
+            <b>Med</b>pass.es
+          </a>
+          <div class="nav-collapse fr">
+            <ul class="nav">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="about.html">About us</a></li>
+              <li><a href="plans.html">Pricing</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <% if current_user %>
+                <li><button class="btn"><%= link_to("Sign Out", destroy_user_session_path, method: :delete) %></button></li>
+              <% else %>
+                <li><button class="btn btn-primary"><%= link_to("Sign In", new_user_session_path) %></button></li>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!-- end .container -->
+      </div><!-- end .navbar-inner -->
+    </div><!-- end .navbar -->
+
+  <!-- Content
+  ================================================== -->
+  <div id="content" class="container">
+<% if flash[:notice] %>
+<div class="alert alert-block"><%= flash[:notice] %><a href="#" class="close" data-dismiss="alert">×</a></div>
+<% end %>
+<% if flash[:alert] %>
+<div class="alert alert-block"><%= flash[:alert] %><a href="#" class="close" data-dismiss="alert">×</a></div>
+<% end %>
+
+<hr />
+
+<div class="well">
+<%= yield %>
+</div>
+
+  <hr />
+
+  <div class="row">
+    <div class="span4">
+      <h2><span class="grey">Why</span> do I need this medicine? </h2>
+       <p>The back of every medpass tells you exactly why you are taking the medication and what it is for. While the front presents you with important information about your medication and even a picture so you know exactly what your are taking.</p>
+    </div>
+    <div class="span4">
+      <h2><span class="grey">When</span> should I take it? </h2>
+       <p>Using Apple's push notification system your medpasses will notify you when it is time to take your meds, and if there is a change in your dose or type of medication made by your doctor the changes will be automatically reflected in the medpass.  No more spending hours on the phone with coordinating the pharmacy, the doctor, and you.</p>
+    </div>
+    <div class="span4">
+      <h2><span class="grey">Who</span> sees my medications?</h2>
+      <p>Only you and your doctor.  Because all notifications and updates to the medpasses are encrypted only your physician's office and you know what medications you're taking so you can be on the same page without sacrificing your privacy.</p>
+    </div>
+  </div>
+  </div>
+
+<footer class="row">
+    <div class="container">
+      <div class="row">
+        <div class="span2">
+          <h3>Quick links</h3>
+          <ul>
+            <li><a href="#" title="">Home</a></li>
+            <li><a href="#" title="">About us</a></li>
+          </ul>
+        </div>
+        <div class="span2">
+          <br /><br />
+          <ul>
+            <li><a href="#" title="">Pricing</a></li>
+            <li><a href="#" title="">Contact</a></li>
+          </ul>
+        </div>
+        <div class="span4 social-networks">
+          <h3>Stay in touch</h3>
+          <p>Stay in touch on social networks</p>
+          <a href="http://facebook.com" title="Follow us on Facebook" class="icon-facebook"></a>
+          <a href="http://twitter.com" title="Follow us on Twitter" class="icon-twitter"></a>
+          <a href="http://github.com/kgautreaux" title="Follow us on Github" class="icon-github"></a>
+        </div>
+        <div class="span4">
+          <h3>Newsletter</h3>
+          <p>Subscribe to our monthly newsletter and be the first to know about our news and special deals!</p>
+          <%= form_tag('/email_me') do -%>
+              <%= text_field_tag :email, "Enter your E-mail" %>
+              <%= submit_tag("Ok", {class: 'btn'}) %>
+          <% end -%>
+        </div>
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+
+  <div id="footer-extra">
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          &copy; 2010—2012 Medpass.es
+        </div>
+        <div class="span4">
+          <i class="icon-phone"></i> &nbsp;
+          (308) 872-9639
+        </div>
+        <div class="span4">
+          <i class="icon-envelope"></i> &nbsp;
+          <a href="mailto:admin@medpasses.com">admin@medpasses.com</a>
+        </div>
+      </div> <!-- end .row -->
+    </div> <!-- end .container -->
+  </div>
+
+
+  </footer>
 </body>
 </html>

@@ -1,16 +1,21 @@
-<h1>Listing medications</h1>
+<h1>Listing Medications</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="span4">Medication</th>
+      <th class="span4">Dose</th>
+      <th class="span4">Directions</th>
+      <th class="span1"></th>
+      <th class="span1"></th>
+      <th class="span1"></th>
   </tr>
 
 <% @medications.each do |medication| %>
   <tr>
-    <td><%= medication.name %></td>
-    <td><%= link_to 'Show', medication %></td>
+    <td><%= link_to medication.name.capitalize, medication %></td>
+    <td><%= Integer(medication.dose) %><%= medication.units %></td>
+    <td><%= medication.directions %></td>
+    <td><%= link_to image_tag('passbook_badge@2x.png', {width: 800, height: 400}), medication %></td>
     <td><%= link_to 'Edit', edit_medication_path(medication) %></td>
     <td><%= link_to 'Destroy', medication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -19,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Medication', new_medication_path %>
+<%= link_to 'Add Medication', new_medication_path, :class => 'btn btn-primary' %>

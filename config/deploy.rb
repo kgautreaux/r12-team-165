@@ -93,5 +93,6 @@ deploy.task :restart, :roles => :app do
   run "RAILS_ENV=production #{release_path}/script/delayed_job -n 2 start"
 
   # Restart Application
+  run "touch #{current_path}/lib/emails.txt"
   run "touch #{current_path}/tmp/restart.txt"
 end
