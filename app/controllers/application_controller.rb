@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     when 'contact'
       @page_contact = 'active'
       render 'pages/contact'
+    else
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 
