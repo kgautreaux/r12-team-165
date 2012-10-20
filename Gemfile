@@ -14,6 +14,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 gem 'font-awesome-sass-rails'
+gem 'omniauth-twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
