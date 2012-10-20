@@ -22,3 +22,4 @@
 /config/config.yml
 /public/images
 /public/uploads
+*.swp

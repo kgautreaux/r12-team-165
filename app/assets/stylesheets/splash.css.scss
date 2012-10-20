@@ -25,7 +25,12 @@ body {
   border-top:5px solid #E0E8EA;
 }
 
-
+div#celebration_banner {
+  background: #000;
+  color: #FFF;
+  z-index: 100;
+  padding: 0.5em;
+}
 /* -------------------------------------------------------- */
 /*  Buttons */
 /* -------------------------------------------------------- */

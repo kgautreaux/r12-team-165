@@ -1,3 +1,4 @@
+<div class="ac"><p><span>Medication images generously provided by the <a href="http://www.nlm.nih.gov">National Library of Medicine</a> at the <a href="http://www.nih.gov">National Institutes of Health</a> using the <a href="http://pillbox.nlm.nih.gov">Pillbox</a> API.  Many thanks to them.</a></span></p></div>
 <h1>Listing Medications</h1>
 <% if current_user.sign_in_count < 2 %>
 <div class="alert alert-block">Please use Safari on OS X or MobileSafari on iPhone or you won't be able to download passes.<a href="#" id="close-button" class="close" data-dismiss="alert">×</a></div>
@@ -6,6 +7,7 @@
 <div class="well hidden-phone visible-desktop">
 <table class="table table-condensed table-hover hidden-phone visible-desktop">
   <tr>
+    <th class="span2"></th>
     <th class="span4">Medication</th>
       <th class="span4">Directions</th>
       <th class="span4">Why?</th>
@@ -14,6 +16,7 @@
 
 <% @medications.each do |medication| %>
   <tr>
+    <td><%= image_tag(medication.thumbnail) %></td>
     <td><%= link_to medication.name.capitalize, edit_medication_path(medication) %><%= link_to image_tag('passbook_badge@2x.png', {class: "pull-right", width: 122, height: 40}), medication %><br/>
       <span><%= Integer(medication.dose) %><%= medication.units %></span>
     </td>
