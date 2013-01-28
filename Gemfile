@@ -8,7 +8,7 @@ gem 'grocer', github: "kgautreaux/grocer"
 gem 'pass_renderer', github: "kgautreaux/pass_renderer"
 gem 'capistrano'
 gem 'bootstrap-sass'
-gem 'devise'
+gem 'devise', '>= 2.2.3'
 gem 'carrierwave'
 gem 'delayed_job_active_record'
 gem 'daemons'
