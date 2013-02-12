@@ -30,7 +30,7 @@ class Medication < ActiveRecord::Base
                              passphrase: Mconf[Rails.env][:p12_cert_password],
                              gateway: 'gateway.push.apple.com')
       push_tokens.each do |token|
-        notification = Grocer::Notification.new({device_token: token}, true)
+        notification = Grocer::PassbookNotification.new(device_token: token)
         pusher.push(notification)
       end
     end
