@@ -14,7 +14,5 @@ class Passbook::PassesController < ApplicationController
     else
       render pkpass: @pass, status: 200 if stale?(last_modified: @pass.updated_at.utc)
     end
-      # respond_with status: 304
-    # end
   end
 end

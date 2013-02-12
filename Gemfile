@@ -4,7 +4,7 @@ gem 'rails', '3.2.12'
 gem 'jquery-rails'
 gem 'pillboxr', '>= 0.8.2'
 gem 'passbook', github: "frozon/passbook"
-gem 'grocer', github: "kgautreaux/grocer"
+gem 'grocer', github: "grocer/grocer"
 gem 'pass_renderer', github: "kgautreaux/pass_renderer"
 gem 'capistrano'
 gem 'bootstrap-sass'
