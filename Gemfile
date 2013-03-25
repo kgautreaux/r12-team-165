@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'jquery-rails'
 gem 'pillboxr', '>= 0.8.2'
 gem 'passbook', github: "frozon/passbook"
